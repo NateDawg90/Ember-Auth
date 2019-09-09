@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [![Build Status](https://travis-ci.org/simplabs/ember-simple-auth.svg?branch=master)](https://travis-ci.org/simplabs/ember-simple-auth)
 
 __[Ember Simple Auth API docs](http://ember-simple-auth.com/api/)__
@@ -870,3 +871,7 @@ released under the
 
 Ember Simple Auth is not an official part of [Ember.js](http://emberjs.com) and
 is not maintained by the Ember.js Core Team.
+=======
+# Ember-Auth
+Demo for playing around with Ember's favorite Auth library
+>>>>>>> 7d8ae7ef08c83fda06bb914d14efb0a41d8871cb
