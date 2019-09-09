@@ -8,11 +8,13 @@ export default Component.extend({
   actions: {
     authenticateWithOAuth2() {
       let { identification, password } = this.getProperties('identification', 'password');
+      // this.set('session.isAuthenticated', true)
+      // this.set('session.store.cookieExpirationTime', 60 * 60 * 24 * 14);
       this.get('session').authenticate('authenticator:oauth2', identification, password)
         .then(() => {
           this.get('rememberMe') && this.set('session.store.cookieExpirationTime', 60 * 60 * 24 * 14);
         })
-        .catch((reason) => {
+        .catch(reason => {
           this.set('errorMessage', reason.error);
         });
     },
@@ -27,10 +29,10 @@ export default Component.extend({
       let responseType = `token`;
       let scope = `email`;
       window.location.replace(`https://accounts.google.com/o/oauth2/v2/auth?`
-                            + `client_id=${clientId}`
-                            + `&redirect_uri=${redirectURI}`
-                            + `&response_type=${responseType}`
-                            + `&scope=${scope}`
+        + `client_id=${clientId}`
+        + `&redirect_uri=${redirectURI}`
+        + `&response_type=${responseType}`
+        + `&scope=${scope}`
       );
     }
   }

@@ -283,12 +283,13 @@ export default BaseAuthenticator.extend({
       if (!isEmpty(scopesString)) {
         data.scope = scopesString;
       }
+      console.log(serverTokenEndpoint, data, headers)
       this.makeRequest(serverTokenEndpoint, data, headers).then((response) => {
+          debugger
         run(() => {
           if (!this._validate(response)) {
             reject('access_token is missing in server response');
           }
-
           const expiresAt = this._absolutizeExpirationTime(response['expires_in']);
           this._scheduleAccessTokenRefresh(response['expires_in'], expiresAt, response['refresh_token']);
           if (!isEmpty(expiresAt)) {
@@ -381,8 +382,8 @@ export default BaseAuthenticator.extend({
         assign(options.headers, clientIdHeader);
       }
     }
-
     return new RSVP.Promise((resolve, reject) => {
+debugger
       fetch(url, options).then((response) => {
         response.text().then((text) => {
           try {
